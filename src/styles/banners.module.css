@@ -1,0 +1,1135 @@
+/* ============================================================
+   VELOOP Rewards — Banner design system styles
+   Shared classes: copy / eyebrow / accents / mini-run / notes +
+   per-banner visual styles, keyframes, responsive rules.
+   ============================================================ */
+
+/* ---------- Shared content column ---------- */
+
+.copy {
+  max-width: 570px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 800;
+  color: #aab0c4;
+  margin-bottom: 13px;
+}
+
+.copy h2 {
+  font-size: clamp(32px, 3.2vw, 49px);
+  line-height: 0.98;
+  margin: 0 0 14px;
+  letter-spacing: -1.8px;
+  font-weight: 800;
+}
+
+.copy h2 span {
+  color: #f1ca63;
+  text-shadow: 0 0 24px rgba(241, 202, 99, 0.18);
+}
+
+.copy p {
+  max-width: 470px;
+  color: #aeb3c5;
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0 0 15px;
+}
+
+.miniReward,
+.featureRow {
+  font-size: 11px;
+  color: #aeb4c7;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.miniReward b {
+  color: #f1ca63;
+}
+
+.featureRow {
+  gap: 18px;
+}
+
+.demoNote {
+  align-self: stretch;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #8b92a8;
+  opacity: 0.55;
+}
+
+/* ---------- Accent tones ---------- */
+
+.goldText {
+  color: #e4bd55;
+}
+
+.blueText {
+  color: #55a7ff;
+}
+
+.purpleText {
+  color: #b78bff;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Banner 1 — Leaderboard ---------- */
+
+.leaderboard {
+  background: radial-gradient(circle at 75% 48%, rgba(187, 135, 32, 0.16), transparent 34%),
+    #080b17;
+}
+
+.leaderboard .copy h2 span {
+  color: #f1ca63;
+}
+
+.leaderVisual {
+  height: 330px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.trophyFixed {
+  position: absolute;
+  left: 52%;
+  top: 3px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.trophyWrap {
+  animation: float 3.8s ease-in-out infinite;
+}
+
+.trophyIcon {
+  width: 88px;
+  height: 88px;
+  color: #e7b83d;
+  filter: drop-shadow(0 8px 15px rgba(235, 185, 56, 0.25));
+}
+
+.crownGlow {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: rgba(235, 190, 65, 0.15);
+  filter: blur(22px);
+  z-index: -1;
+}
+
+.chartLine {
+  position: absolute;
+  inset: 30px 20px 65px;
+  background: linear-gradient(
+    135deg,
+    transparent 0 45%,
+    rgba(230, 187, 66, 0.5) 45.5% 46%,
+    transparent 46.5% 57%,
+    rgba(230, 187, 66, 0.6) 57.5% 58%,
+    transparent 58.5%
+  );
+  opacity: 0.55;
+}
+
+.podium {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 9px;
+}
+
+.rankCard {
+  width: 110px;
+  height: 128px;
+  border-radius: 10px 10px 5px 5px;
+  border: 1px solid #3c4051;
+  background: linear-gradient(#171b2a, #0d101c);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+  position: relative;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+  animation: rise 4s ease-in-out infinite;
+}
+
+.rankFirst {
+  height: 155px;
+}
+
+.rankNo {
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  font-size: 9px;
+  color: #aab0c2;
+}
+
+.avatar {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #20263a;
+  color: #f4ca58;
+  font-weight: 800;
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.rankCard strong {
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.rankCard small {
+  font-size: 9px;
+  color: #a6acc0;
+  margin-top: 3px;
+}
+
+.gold {
+  border-color: #a47c24;
+}
+
+.silver {
+  border-color: #687389;
+}
+
+.bronze {
+  border-color: #815936;
+}
+
+.floatingXP {
+  position: absolute;
+  right: 8%;
+  top: 26%;
+  padding: 7px 12px;
+  border-radius: 99px;
+  background: #171b27;
+  border: 1px solid #5c4b25;
+  color: #eac45a;
+  font-size: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ---------- Banner 2 — Watch Ads & Earn ---------- */
+
+.watch {
+  background: radial-gradient(circle at 74% 55%, rgba(33, 110, 215, 0.2), transparent 37%),
+    #070b18;
+}
+
+.watch .copy h2 span {
+  color: #55a7ff;
+  text-shadow: 0 0 24px rgba(85, 167, 255, 0.2);
+}
+
+.adVisual {
+  height: 330px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  width: 225px;
+  height: 180px;
+  border: 2px solid #2e81ee;
+  border-radius: 13px;
+  transform: rotate(-7deg);
+  background: linear-gradient(145deg, #152844, #090e1b);
+  box-shadow: 0 0 35px rgba(33, 125, 244, 0.16),
+    inset 0 0 30px rgba(36, 117, 223, 0.1);
+  padding: 13px;
+  position: relative;
+  animation: screenFloat 5s ease-in-out infinite;
+}
+
+.screenTop {
+  font-size: 8px;
+  color: #8294b5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playCircle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #1773e8;
+  display: grid;
+  place-items: center;
+  margin: 28px auto 0;
+  box-shadow: 0 0 0 10px rgba(23, 115, 232, 0.1);
+  animation: pulse 2.2s infinite;
+}
+
+.playDone {
+  background: #2fae6d;
+  box-shadow: 0 0 0 10px rgba(47, 174, 109, 0.12);
+}
+
+.videoBar {
+  height: 4px;
+  background: #303b50;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.videoBar i {
+  display: block;
+  width: 45%;
+  height: 100%;
+  background: #2685ee;
+  border-radius: 10px;
+  transition: width 2.6s linear;
+}
+
+.playing .videoBar i {
+  width: 90%;
+}
+
+.playing .playCircle {
+  background: #3f8ff5;
+}
+
+.wallet {
+  position: absolute;
+  right: 6%;
+  bottom: 37px;
+  width: 120px;
+  height: 130px;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #15233c, #08101e);
+  border: 1px solid #236ed1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  animation: float 4s ease-in-out infinite;
+}
+
+.wallet span {
+  font-size: 36px;
+  font-weight: 900;
+  color: #3695ff;
+}
+
+.wallet b {
+  color: #c9d9f3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.coin {
+  position: absolute;
+  color: #45a0ff;
+  font-size: 11px;
+  font-weight: 900;
+  border: 1px solid #3a91ee;
+  border-radius: 50%;
+  padding: 8px;
+  animation: coinFloat 4s ease-in-out infinite;
+}
+
+.coin0 {
+  top: 20%;
+  right: 12%;
+}
+
+.coin1 {
+  top: 33%;
+  right: 0;
+}
+
+.coin2 {
+  bottom: 18%;
+  left: 9%;
+  animation-delay: 1s;
+}
+
+.coin3 {
+  top: 11%;
+  left: 20%;
+  animation-delay: 1.6s;
+}
+
+.earnBadge {
+  position: absolute;
+  bottom: 0;
+  left: 23%;
+  font-size: 10px;
+  color: #a8c9f2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.earnDone {
+  color: #9fe8bf;
+}
+
+/* ---------- Banner 3 — Contact Us ---------- */
+
+.contact {
+  background: radial-gradient(circle at 58% 50%, rgba(83, 120, 174, 0.16), transparent 35%),
+    #0c1422;
+}
+
+.contact .copy h2 span {
+  color: #9dbbe1;
+  text-shadow: 0 0 24px rgba(157, 187, 225, 0.18);
+}
+
+.supportVisual {
+  height: 330px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agent {
+  position: absolute;
+  left: 27%;
+  bottom: 8px;
+  text-align: center;
+}
+
+.agentHead {
+  width: 100px;
+  height: 110px;
+  border-radius: 50px 50px 35px 35px;
+  background: #d79567;
+  position: relative;
+  border: 5px solid #252e42;
+  overflow: visible;
+}
+
+.face {
+  position: absolute;
+  width: 58px;
+  height: 65px;
+  background: #c9855c;
+  border-radius: 45% 45% 48% 48%;
+  left: 17px;
+  top: 24px;
+}
+
+.face::after {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 39px;
+  width: 11px;
+  height: 4px;
+  border-bottom: 2px solid #7b4436;
+  border-radius: 50%;
+}
+
+.headset {
+  position: absolute;
+  inset: -13px -11px auto;
+  width: 118px;
+  height: 75px;
+  border: 6px solid #263249;
+  border-bottom: 0;
+  border-radius: 65px 65px 0 0;
+  z-index: 2;
+}
+
+.agentBody {
+  margin: -4px auto 0;
+  width: 130px;
+  height: 92px;
+  border-radius: 30px 30px 8px 8px;
+  background: linear-gradient(145deg, #375477, #1d2b40);
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  font-weight: 900;
+  color: #dbe8f8;
+}
+
+.chatBubble {
+  position: absolute;
+  left: 6%;
+  top: 22%;
+  background: #e9f0fa;
+  color: #1e2a3d;
+  border-radius: 12px;
+  padding: 12px 15px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: float 4s ease-in-out infinite;
+}
+
+.supportPanel {
+  position: absolute;
+  right: 0;
+  width: 240px;
+  border: 1px solid #3a4559;
+  border-radius: 10px;
+  background: rgba(15, 21, 34, 0.86);
+  padding: 8px 12px;
+  backdrop-filter: blur(6px);
+}
+
+.supportRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  margin: 0 -6px;
+  padding: 9px 6px;
+  border: 0;
+  border-bottom: 1px solid #252c3d;
+  background: none;
+  color: #d5dbea;
+  font-size: 10px;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.supportRow:last-of-type {
+  border-bottom: 0;
+}
+
+.supportRow:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.supportRow svg:last-child {
+  margin-left: auto;
+  color: #7f8ba2;
+}
+
+.supportMail {
+  display: block;
+  font-size: 8px;
+  color: #aab5c9;
+  margin: 6px 2px 8px 8px;
+  word-break: break-all;
+}
+
+/* ---------- Banner 4 — Follow & Earn ---------- */
+
+.follow {
+  background: radial-gradient(circle at 74% 48%, rgba(126, 76, 203, 0.2), transparent 35%),
+    #0d0a18;
+}
+
+.follow .copy h2 span {
+  color: #b98cff;
+  text-shadow: 0 0 24px rgba(185, 140, 255, 0.2);
+}
+
+.socialVisual {
+  height: 330px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phoneStage {
+  position: relative;
+  z-index: 2;
+  animation: phoneFloat 5s ease-in-out infinite;
+}
+
+.phone {
+  width: 170px;
+  height: 305px;
+  border: 5px solid #303246;
+  border-radius: 25px;
+  background: linear-gradient(#171323, #0a0a12);
+  padding: 30px 15px 15px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 9px;
+  border-radius: 10px;
+  background: #050509;
+}
+
+.profileLogo {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #8b55dd, #39205d);
+  display: grid;
+  place-items: center;
+  margin: 8px auto;
+  color: #fff;
+  font-weight: 900;
+}
+
+.phone strong {
+  display: block;
+  font-size: 11px;
+}
+
+.phone > small {
+  font-size: 8px;
+  color: #9290a3;
+}
+
+.phone button {
+  border: 1px solid #8350d0;
+  background: #43237b;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 6px 20px;
+  margin: 11px auto 9px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  display: block;
+}
+
+.phone button:hover {
+  background: #55308f;
+}
+
+.followedBtn {
+  border-color: #6fdca1 !important;
+  background: #1c7a51 !important;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #2a2635;
+  padding-top: 9px;
+  font-size: 10px;
+}
+
+.stats small {
+  font-size: 7px;
+  color: #898495;
+}
+
+.socialOrb {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #241737;
+  border: 1px solid #8656cb;
+  color: #b98aff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  animation: orbFloat 4s ease-in-out infinite;
+}
+
+.orb1 {
+  left: 5%;
+  top: 22%;
+}
+
+.orb2 {
+  left: 0;
+  bottom: 18%;
+  animation-delay: 0.7s;
+}
+
+.orb3 {
+  right: 15%;
+  top: 9%;
+  animation-delay: 1.3s;
+}
+
+.campaignCard {
+  position: absolute;
+  right: 0;
+  bottom: 14px;
+  width: 215px;
+  border: 1px solid #4d3b68;
+  background: #171224;
+  border-radius: 9px;
+  padding: 11px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.campaignCard svg {
+  color: #c295ff;
+}
+
+.campaignCard b,
+.campaignCard small {
+  display: block;
+  font-size: 9px;
+}
+
+.campaignCard small {
+  color: #9e97ad;
+  margin-top: 3px;
+}
+
+.campaignCard > strong {
+  font-size: 10px;
+  color: #c49aff;
+}
+
+/* ---------- Banner 5 — Daily Bonus ---------- */
+
+.daily {
+  background: radial-gradient(circle at 69% 52%, rgba(188, 143, 35, 0.18), transparent 35%),
+    #0c0d17;
+}
+
+.daily .copy h2 span {
+  color: #f1ca63;
+}
+
+.dailyVisual {
+  height: 330px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giftStage {
+  animation: giftFloat 3.8s ease-in-out infinite;
+}
+
+.giftBox {
+  width: 155px;
+  height: 135px;
+  border: 1px solid #a17b27;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #b88923, #5b4010);
+  display: grid;
+  place-items: center;
+  color: #ffd969;
+  position: relative;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.5s ease;
+}
+
+.giftBox::before,
+.giftBox::after {
+  content: "";
+  position: absolute;
+  background: #e7bc48;
+}
+
+.giftBox::before {
+  width: 18px;
+  height: 100%;
+  left: calc(50% - 9px);
+}
+
+.giftBox::after {
+  height: 18px;
+  width: 100%;
+  top: calc(50% - 9px);
+}
+
+.giftBox svg {
+  z-index: 1;
+  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.25));
+}
+
+.giftBox span {
+  position: absolute;
+  bottom: 10px;
+  z-index: 2;
+  font-size: 15px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.giftOpen {
+  transform: translateY(-6px) rotate(-2deg);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.45), 0 0 30px rgba(246, 204, 91, 0.25);
+}
+
+.gems {
+  position: absolute;
+  left: 18%;
+  bottom: 31px;
+  color: #f3cb5f;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.gems small {
+  font-size: 8px;
+  display: block;
+  color: #c9b57d;
+  letter-spacing: 1px;
+}
+
+.bonusCard {
+  position: absolute;
+  left: 5%;
+  top: 30px;
+  border-left: 2px solid #d6ad45;
+  padding: 9px 0 9px 12px;
+}
+
+.bonusCard small,
+.bonusCard strong,
+.bonusCard span {
+  display: block;
+}
+
+.bonusCard small {
+  font-size: 8px;
+  color: #aaaec0;
+}
+
+.bonusCard strong {
+  font-size: 26px;
+  color: #f2c95b;
+}
+
+.bonusCard span {
+  font-size: 9px;
+  color: #aeb3c3;
+}
+
+.streak {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 215px;
+  padding: 13px;
+  border: 1px solid #3c3b40;
+  border-radius: 10px;
+  background: #14151e;
+}
+
+.streak > b {
+  font-size: 9px;
+  color: #e3c267;
+}
+
+.streak div {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.streak i {
+  font-style: normal;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 1px solid #555968;
+  display: grid;
+  place-items: center;
+  font-size: 8px;
+  color: #8c91a1;
+}
+
+.streak .doneDay {
+  background: #c6972e;
+  color: #fff;
+  border-color: #d5ab48;
+}
+
+.streak strong {
+  display: block;
+  font-size: 9px;
+}
+
+.streak small {
+  font-size: 8px;
+  color: #9298aa;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rise {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes screenFloat {
+  0%,
+  100% {
+    transform: rotate(-7deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-5deg) translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 8px rgba(23, 115, 232, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(23, 115, 232, 0.03);
+  }
+}
+
+@keyframes coinFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-14px) rotate(10deg);
+  }
+}
+
+@keyframes phoneFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes giftFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .copy {
+    max-width: 650px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .copy h2 {
+    font-size: 38px;
+  }
+
+  .leaderVisual,
+  .adVisual,
+  .supportVisual,
+  .socialVisual,
+  .dailyVisual {
+    height: 270px;
+    max-width: 680px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .agent {
+    left: 28%;
+  }
+
+  .supportPanel {
+    right: 0;
+  }
+
+  .campaignCard {
+    right: 0;
+  }
+
+  .streak {
+    right: 0;
+  }
+
+  .bonusCard {
+    left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .copy h2 {
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+
+  .copy p {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .leaderVisual,
+  .adVisual,
+  .supportVisual,
+  .socialVisual,
+  .dailyVisual {
+    height: 250px;
+  }
+
+  .rankCard {
+    width: 86px;
+    height: 108px;
+  }
+
+  .rankFirst {
+    height: 130px;
+  }
+
+  .trophyIcon {
+    width: 68px;
+    height: 68px;
+  }
+
+  .screen {
+    width: 190px;
+    height: 150px;
+  }
+
+  .wallet {
+    width: 95px;
+    height: 105px;
+    right: 0;
+  }
+
+  .wallet span {
+    font-size: 27px;
+  }
+
+  .supportPanel {
+    width: 190px;
+  }
+
+  .agent {
+    left: 18%;
+    transform: scale(0.8);
+    transform-origin: bottom;
+  }
+
+  .chatBubble {
+    left: 0;
+    top: 6%;
+    transform: scale(0.9);
+    transform-origin: left bottom;
+  }
+
+  .phone {
+    transform: scale(0.78);
+  }
+
+  .campaignCard {
+    width: 195px;
+    right: 0;
+  }
+
+  .socialOrb {
+    width: 40px;
+    height: 40px;
+  }
+
+  .streak {
+    width: 185px;
+  }
+
+  .gems {
+    left: 4%;
+    font-size: 20px;
+  }
+
+  .bonusCard {
+    top: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trophyWrap,
+  .screen,
+  .wallet,
+  .coin,
+  .phoneStage,
+  .socialOrb,
+  .giftStage,
+  .chatBubble,
+  .floatingXP {
+    animation: none;
+  }
+}

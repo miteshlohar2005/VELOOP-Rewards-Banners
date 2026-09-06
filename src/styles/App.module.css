@@ -1,0 +1,135 @@
+.page {
+  min-height: 100vh;
+  background: #161827;
+  padding: 28px clamp(16px, 4vw, 56px) 34px;
+}
+
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 99;
+  padding: 10px 16px;
+  border-radius: 0 0 10px 0;
+  background: #e7bd4e;
+  color: #191105;
+  font-weight: 700;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.skipLink:focus {
+  left: 0;
+}
+
+.header {
+  max-width: 1440px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brandWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 22px;
+  background: linear-gradient(90deg, #f6d879, #e7bd4e 55%, #c7922a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(231, 189, 78, 0.25));
+}
+
+.brandDivider {
+  width: 1px;
+  height: 18px;
+  background: #3a3e52;
+}
+
+.brandSub {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: #aab0c3;
+}
+
+.demoPill {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: #9aa1b7;
+  border: 1px solid #303449;
+  border-radius: 99px;
+  padding: 7px 13px;
+  white-space: nowrap;
+}
+
+.bannerStack {
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.footer {
+  max-width: 1440px;
+  margin: 12px auto 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #747b90;
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 0 5px;
+}
+
+.footer strong {
+  color: #a8afc2;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.footer strong small {
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 20px 12px 28px;
+  }
+
+  .header {
+    margin-bottom: 14px;
+  }
+
+  .demoPill {
+    display: none;
+  }
+
+  .footer {
+    font-size: 9px;
+  }
+
+  .footer strong {
+    display: none;
+  }
+}
