@@ -1,0 +1,119 @@
+.shell {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--vr-radius);
+  border: 1px solid var(--vr-border);
+  background: var(--vr-surface);
+  box-shadow:
+    0 30px 70px -28px rgba(0, 0, 0, 0.65),
+    0 8px 24px -12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    transform 0.45s var(--vr-ease),
+    border-color 0.45s var(--vr-ease),
+    box-shadow 0.45s var(--vr-ease),
+    opacity 0.8s var(--vr-ease),
+    translate 0.8s var(--vr-ease);
+}
+
+/* ---------- Reveal-on-scroll (uses the standalone `translate` property
+   so it never clashes with the hover `transform` lift) ---------- */
+
+.shell:not(.isRevealed) {
+  opacity: 0;
+  translate: 0 16px;
+}
+
+.shell.isRevealed {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.025),
+    transparent 42%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shell:hover {
+  transform: translateY(-4px);
+  border-color: var(--vr-border-strong);
+  box-shadow:
+    0 40px 90px -30px rgba(0, 0, 0, 0.75),
+    0 10px 30px -12px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: stretch;
+  min-height: 434px;
+  grid-template-areas: "copy visual";
+  grid-template-columns: minmax(0, 40fr) 60fr;
+}
+
+.indexChip {
+  position: absolute;
+  z-index: 5;
+  left: clamp(16px, 2.4vw, 30px);
+  top: clamp(16px, 2.4vw, 30px);
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--vr-border);
+  color: var(--vr-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .inner {
+    grid-template-columns: minmax(340px, 44fr) 56fr;
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 999px) {
+  .inner {
+    grid-template-areas: "visual" "copy";
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .shell {
+    border-radius: 20px;
+  }
+
+  .indexChip {
+    width: 30px;
+    height: 30px;
+    left: 14px;
+    top: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell:not(.isRevealed) {
+    opacity: 1;
+    translate: none;
+  }
+}

@@ -1,0 +1,564 @@
+/* ============================================================
+   Watch Ads & Earn — visual identity: ad flow scene
+   ============================================================ */
+
+.visual {
+  grid-area: visual;
+  position: relative;
+  overflow: hidden;
+  min-height: 434px;
+}
+
+.visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.013) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(95% 95% at 62% 42%, #000 20%, transparent 72%);
+  mask-image: radial-gradient(95% 95% at 62% 42%, #000 20%, transparent 72%);
+  pointer-events: none;
+}
+
+.baseGlow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 54% at 60% 34%, rgba(90, 167, 255, 0.17), transparent 62%),
+    radial-gradient(44% 40% at 14% 84%, rgba(90, 167, 255, 0.08), transparent 70%),
+    radial-gradient(130% 105% at 50% 0%, rgba(10, 12, 20, 0) 58%, rgba(3, 5, 10, 0.42) 100%);
+  pointer-events: none;
+}
+
+.accent {
+  background: linear-gradient(180deg, #dcebff 0%, #6cb0ff 55%, #3f8bf2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.creditNote {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9be0b9;
+}
+
+/* ---------- Device ---------- */
+
+.device {
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -53%) rotate(-2deg);
+  width: 258px;
+  padding: 13px;
+  border-radius: 23px;
+  border: 1px solid rgba(90, 167, 255, 0.34);
+  background:
+    linear-gradient(150deg, rgba(42, 84, 148, 0.5), rgba(15, 24, 45, 0.9) 55%),
+    #0a1324;
+  box-shadow:
+    0 34px 70px -24px rgba(0, 0, 0, 0.7),
+    0 0 60px -18px rgba(60, 140, 255, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  animation: deviceFloat 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+.device::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 28%);
+  pointer-events: none;
+}
+
+.deviceTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.adTag {
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #c3d6f2;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.duration {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8da9cf;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.playButton {
+  width: 68px;
+  height: 68px;
+  margin: 6px auto 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #63acff, #2370e2 70%);
+  color: #fff;
+  box-shadow:
+    0 16px 30px -10px rgba(30, 108, 224, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: playPulse 2.4s ease-out infinite;
+  transition: background 0.4s ease;
+}
+
+.playDone {
+  background: linear-gradient(180deg, #54db8d, #1f9d58 70%);
+  box-shadow:
+    0 16px 30px -10px rgba(37, 173, 92, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: none;
+}
+
+.progress {
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(120, 155, 205, 0.22);
+  overflow: hidden;
+}
+
+.progress i {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #4e96f2, #7cb9ff);
+  box-shadow: 0 0 12px rgba(90, 167, 255, 0.6);
+  transition: width 2.4s linear;
+}
+
+.devicePlaying .progress i,
+.progress .progressActive {
+  width: 100%;
+}
+
+.screenCaption {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #8fa9cc;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- Floating coins ---------- */
+
+.coin {
+  position: absolute;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #d9f1ff;
+  background: linear-gradient(150deg, rgba(90, 167, 255, 0.28), rgba(20, 50, 100, 0.6));
+  border: 1px solid rgba(90, 167, 255, 0.5);
+  box-shadow:
+    0 12px 24px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: coinFloat 4.6s ease-in-out infinite;
+}
+
+.coinA {
+  top: 18%;
+  right: 20%;
+}
+
+.coinB {
+  top: 42%;
+  right: 6%;
+  animation-delay: 1.2s;
+  width: 34px;
+  height: 34px;
+  font-size: 9px;
+}
+
+.coinC {
+  top: 12%;
+  left: 12%;
+  animation-delay: 2s;
+  width: 44px;
+  height: 44px;
+  font-size: 11px;
+}
+
+/* ---------- Wallet ---------- */
+
+.wallet {
+  position: absolute;
+  right: 5%;
+  bottom: 74px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 148px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #16233d, #0c1526);
+  border: 1px solid rgba(90, 167, 255, 0.3);
+  box-shadow:
+    0 18px 36px -14px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: floatSoft 5s ease-in-out infinite;
+}
+
+.walletIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(90, 167, 255, 0.12);
+  border: 1px solid rgba(90, 167, 255, 0.3);
+  color: #8fc1ff;
+}
+
+.walletText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.walletText small {
+  font-size: 10px;
+  color: #7f96b8;
+  letter-spacing: 0.6px;
+}
+
+.walletText strong {
+  font-size: 17px;
+  font-weight: 800;
+  color: #dcebff;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.walletAmount {
+  color: #7fe3a8;
+}
+
+.walletCredited {
+  border-color: rgba(84, 194, 132, 0.45);
+  box-shadow:
+    0 18px 36px -14px rgba(0, 0, 0, 0.6),
+    0 0 30px -8px rgba(84, 194, 132, 0.35);
+}
+
+.walletFlash {
+  position: absolute;
+  top: -26px;
+  right: 6px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #155f3c;
+  border: 1px solid rgba(127, 227, 168, 0.4);
+  color: #a7f2c5;
+  font-size: 10px;
+  font-weight: 700;
+  animation: popIn 0.4s var(--vr-ease) both;
+}
+
+/* ---------- Steps ---------- */
+
+.steps {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6e7f99;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  white-space: nowrap;
+}
+
+.step::after {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-left: 22px;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.stepIndex {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #7f92af;
+}
+
+.stepActive {
+  color: #bcd9fc;
+}
+
+.stepActive .stepIndex {
+  background: rgba(90, 167, 255, 0.16);
+  border-color: rgba(90, 167, 255, 0.5);
+  color: #9bc9ff;
+  box-shadow: 0 0 14px -3px rgba(90, 167, 255, 0.5);
+}
+
+.stepDone {
+  color: #8fc9ff;
+}
+
+.stepDone .stepIndex {
+  background: rgba(90, 167, 255, 0.24);
+  border-color: rgba(90, 167, 255, 0.55);
+  color: #d7ecff;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes deviceFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -53%) rotate(-2deg);
+  }
+  50% {
+    transform: translate(-50%, -56%) rotate(-0.6deg);
+  }
+}
+
+@keyframes playPulse {
+  0% {
+    box-shadow:
+      0 16px 30px -10px rgba(30, 108, 224, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 0 rgba(90, 167, 255, 0.35);
+  }
+  70% {
+    box-shadow:
+      0 16px 30px -10px rgba(30, 108, 224, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 16px rgba(90, 167, 255, 0);
+  }
+  100% {
+    box-shadow:
+      0 16px 30px -10px rgba(30, 108, 224, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 0 rgba(90, 167, 255, 0);
+  }
+}
+
+@keyframes coinFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(8deg);
+  }
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- Stacked layouts ---------- */
+
+@media (max-width: 999px) {
+  .visual {
+    height: 248px;
+    min-height: 248px;
+  }
+
+  .device {
+    left: 48%;
+    width: 224px;
+    top: 46%;
+  }
+
+  .playButton {
+    width: 58px;
+    height: 58px;
+  }
+
+  .coinA {
+    right: 3%;
+    top: 14%;
+  }
+
+  .coinB {
+    right: 24%;
+    top: 36%;
+  }
+
+  .coinC {
+    left: 7%;
+    top: 20%;
+  }
+
+  .wallet {
+    bottom: 70px;
+    right: 4%;
+  }
+
+  .steps {
+    bottom: 18px;
+  }
+
+  .step {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .step::after {
+    width: 14px;
+    margin-left: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .visual {
+    height: 232px;
+    min-height: 232px;
+  }
+
+  .device {
+    width: 208px;
+    top: 44%;
+  }
+
+  .playButton {
+    width: 52px;
+    height: 52px;
+  }
+
+  .coinA {
+    right: 2%;
+    top: 10%;
+    width: 34px;
+    height: 34px;
+  }
+
+  .coinB {
+    display: none;
+  }
+
+  .coinC {
+    left: 4%;
+    top: 16%;
+    width: 38px;
+    height: 38px;
+  }
+
+  .wallet {
+    bottom: 54px;
+    right: 3%;
+    min-width: 132px;
+    padding: 9px 12px;
+  }
+
+  .walletText strong {
+    font-size: 15px;
+  }
+
+  .steps {
+    bottom: 12px;
+  }
+
+  .step {
+    padding: 5px 8px;
+    font-size: 10.5px;
+  }
+
+  .step::after {
+    width: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .device {
+    width: 192px;
+    left: 44%;
+  }
+
+  .coinA,
+  .coinC {
+    display: none;
+  }
+
+  .wallet {
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .device,
+  .coin,
+  .wallet,
+  .playButton,
+  .walletFlash {
+    animation: none;
+  }
+}

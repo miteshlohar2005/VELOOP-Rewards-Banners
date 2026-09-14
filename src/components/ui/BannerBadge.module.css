@@ -1,0 +1,70 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--vr-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 18px -12px rgba(0, 0, 0, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--vr-text-soft);
+  width: fit-content;
+}
+
+.iconMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.gold {
+  color: var(--vr-gold);
+  border-color: rgba(232, 189, 82, 0.22);
+  background: rgba(232, 189, 82, 0.05);
+}
+
+.blue {
+  color: var(--vr-blue);
+  border-color: rgba(90, 167, 255, 0.22);
+  background: rgba(90, 167, 255, 0.05);
+}
+
+.steel {
+  color: var(--vr-steel);
+  border-color: rgba(147, 180, 222, 0.22);
+  background: rgba(147, 180, 222, 0.05);
+}
+
+.violet {
+  color: var(--vr-violet);
+  border-color: rgba(168, 131, 247, 0.24);
+  background: rgba(168, 131, 247, 0.05);
+}
+
+.amber {
+  color: var(--vr-amber);
+  border-color: rgba(239, 195, 91, 0.24);
+  background: rgba(239, 195, 91, 0.05);
+}
+
+@media (max-width: 767px) {
+  .badge {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    padding: 7px 12px;
+  }
+}

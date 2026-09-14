@@ -1,3 +1,45 @@
+/* ============================================================
+   VELOOP Rewards — Global foundation
+   Design tokens, base reset, focus + reduced-motion support.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --vr-bg: #161827;
+  --vr-surface: #0c0f1b;
+  --vr-surface-raised: #121628;
+  --vr-surface-sunken: #080b14;
+
+  /* Lines */
+  --vr-border: rgba(255, 255, 255, 0.08);
+  --vr-border-strong: rgba(255, 255, 255, 0.14);
+
+  /* Text */
+  --vr-text: #f4f6fb;
+  --vr-text-soft: #a6adc0;
+  --vr-text-muted: #6f768a;
+
+  /* Feature accents */
+  --vr-gold: #e8bd52;
+  --vr-gold-soft: #f6da8d;
+  --vr-gold-deep: #9a7219;
+  --vr-blue: #5aa7ff;
+  --vr-blue-deep: #2b6fe0;
+  --vr-steel: #93b4de;
+  --vr-steel-deep: #5a7ba3;
+  --vr-violet: #a883f7;
+  --vr-violet-deep: #6f43c9;
+  --vr-amber: #efc35b;
+  --vr-amber-deep: #a1771b;
+
+  /* Radii + motion */
+  --vr-radius: 24px;
+  --vr-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  font-family: "Poppins", Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,11 +50,13 @@ html {
 
 body {
   margin: 0;
-  background: #161827;
-  color: #fff;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  background: var(--vr-bg);
+  color: var(--vr-text);
+  font-family: "Poppins", Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -26,15 +70,34 @@ button {
   color: inherit;
 }
 
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
 button:focus-visible,
-a:focus-visible {
-  outline: 2px solid #fff;
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--vr-gold-soft);
   outline-offset: 3px;
+  border-radius: 6px;
 }
 
 ::selection {
-  background: #eabf55;
-  color: #111;
+  background: var(--vr-gold);
+  color: #191105;
 }
 
 img,
