@@ -414,53 +414,54 @@
 
 @media (max-width: 999px) {
   .visual {
-    height: 236px;
-    min-height: 236px;
+    height: 240px;
+    min-height: 240px;
   }
 
   .poolChip {
-    top: 16px;
-    right: 5%;
+    top: 14px;
+    right: 4%;
   }
 
   .chart {
-    bottom: 118px;
-    height: 92px;
+    bottom: 110px;
+    height: 86px;
   }
 
   .trophyMount {
-    top: 6px;
-    transform: translateX(-50%) scale(0.76);
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.72);
     animation-name: floatYSmall;
   }
 
   @keyframes floatYSmall {
     0%,
     100% {
-      transform: translateX(-50%) translateY(0) scale(0.76);
+      transform: translateX(-50%) translateY(0) scale(0.72);
     }
     50% {
-      transform: translateX(-50%) translateY(-6px) scale(0.76);
+      transform: translateX(-50%) translateY(-6px) scale(0.72);
     }
   }
 
   .xpChip {
-    top: 72px;
-    right: 6%;
+    top: 60px;
+    right: 4%;
     padding: 8px 13px;
     font-size: 11px;
   }
 
   .rankCard {
-    width: 100px;
-    height: 108px;
+    width: 98px;
+    height: 106px;
     border-radius: 15px;
     padding: 10px 9px 9px;
   }
 
   .rankCard.first {
-    width: 112px;
-    height: 130px;
+    width: 110px;
+    height: 126px;
   }
 
   .rankCard::after {
@@ -480,15 +481,15 @@
   }
 
   .avatar {
-    width: 39px;
-    height: 39px;
+    width: 38px;
+    height: 38px;
     font-size: 15px;
     margin-top: 10px;
   }
 
   .rankCard.first .avatar {
-    width: 44px;
-    height: 44px;
+    width: 43px;
+    height: 43px;
     font-size: 17px;
   }
 
@@ -507,94 +508,160 @@
 
   .podium {
     gap: 9px;
-    padding: 0 16px 16px;
+    padding: 0 16px 14px;
   }
 }
 
 @media (max-width: 560px) {
   .visual {
-    height: 210px;
-    min-height: 210px;
+    height: 230px;
+    min-height: 230px;
   }
 
   .chart {
-    bottom: 102px;
-    height: 78px;
+    bottom: 96px;
+    height: 74px;
   }
 
   .trophyMount {
     top: 2px;
-    transform: translateX(-50%) scale(0.68);
+    left: 50%;
+    transform: translateX(-50%) scale(0.62);
     animation-name: floatYXSmall;
   }
 
   @keyframes floatYXSmall {
     0%,
     100% {
-      transform: translateX(-50%) translateY(0) scale(0.68);
+      transform: translateX(-50%) translateY(0) scale(0.62);
     }
     50% {
-      transform: translateX(-50%) translateY(-5px) scale(0.68);
+      transform: translateX(-50%) translateY(-5px) scale(0.62);
     }
+  }
+
+  .poolChip {
+    top: 12px;
+    right: 3%;
+    padding: 6px 11px;
+    font-size: 11px;
   }
 
   .xpChip {
-    top: 58px;
-    right: 4%;
-    padding: 7px 11px;
-    font-size: 10.5px;
+    top: 52px;
+    right: 3%;
+    padding: 6px 10px;
+    font-size: 10px;
   }
 
   .rankCard {
-    width: 94px;
-    height: 100px;
-    padding: 9px 8px 8px;
+    width: clamp(78px, 24vw, 90px);
+    height: 96px;
+    padding: 8px 6px 6px;
+    border-radius: 14px;
   }
 
   .rankCard.first {
-    width: 104px;
-    height: 120px;
+    width: clamp(88px, 27vw, 100px);
+    height: 112px;
   }
 
   .avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-    margin-top: 9px;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    margin-top: 7px;
   }
 
   .rankCard.first .avatar {
-    width: 41px;
-    height: 41px;
-    font-size: 16px;
+    width: 37px;
+    height: 37px;
+    font-size: 15px;
+  }
+
+  .info {
+    margin-top: 5px;
+    gap: 2px;
   }
 
   .info strong {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 
   .veValue {
-    font-size: 9.5px;
-    gap: 4px;
+    font-size: 9px;
+    gap: 3px;
   }
 
   .podium {
-    gap: 8px;
-    padding: 0 12px 14px;
+    gap: clamp(4px, 1.8vw, 8px);
+    padding: 0 6px 12px;
   }
 }
 
 @media (max-width: 380px) {
+  .visual {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .trophyMount {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.55);
+  }
+
+  .poolChip {
+    top: 10px;
+    right: 2%;
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+
   .xpChip {
-    display: none;
+    top: 44px;
+    right: 2%;
+    padding: 5px 8px;
+    font-size: 9.5px;
+    display: inline-flex;
   }
 
   .rankCard {
-    width: 88px;
+    width: clamp(72px, 23vw, 82px);
+    height: 90px;
+    padding: 6px 4px 5px;
   }
 
   .rankCard.first {
-    width: 98px;
+    width: clamp(80px, 26vw, 92px);
+    height: 104px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .rankCard.first .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 13.5px;
+  }
+
+  .info strong {
+    font-size: 10px;
+  }
+
+  .veValue {
+    font-size: 8.5px;
+    gap: 2px;
+  }
+
+  .podium {
+    gap: 3px;
+    padding: 0 4px 10px;
   }
 }
 

@@ -484,22 +484,22 @@
 
 @media (max-width: 999px) {
   .visual {
-    height: 248px;
-    min-height: 248px;
+    height: 250px;
+    min-height: 250px;
   }
 
   .panel {
     right: 4%;
-    width: 300px;
+    width: 290px;
   }
 
   .agent {
-    left: 10%;
+    left: 8%;
   }
 
   .chatBubble {
-    top: 12%;
-    left: 26%;
+    top: 14px;
+    left: 54px;
   }
 
   .mailFloat {
@@ -510,31 +510,31 @@
 
 @media (max-width: 767px) {
   .visual {
-    height: 234px;
-    min-height: 234px;
+    height: 240px;
+    min-height: 240px;
   }
 
   .agent {
-    left: 5%;
-    transform: translateY(-50%) scale(0.82);
-    transform-origin: center;
+    left: 3%;
+    transform: translateY(-50%) scale(0.76);
+    transform-origin: center left;
     animation-name: bobSmall;
   }
 
   @keyframes bobSmall {
     0%,
     100% {
-      transform: translateY(calc(-50% - 0px)) scale(0.82);
+      transform: translateY(calc(-50% - 0px)) scale(0.76);
     }
     50% {
-      transform: translateY(calc(-50% - 5px)) scale(0.82);
+      transform: translateY(calc(-50% - 5px)) scale(0.76);
     }
   }
 
   .chatBubble {
-    top: 8%;
-    left: 24%;
-    padding: 10px 13px;
+    top: 12px;
+    left: 50px;
+    padding: 8px 12px;
   }
 
   .mailFloat {
@@ -544,14 +544,13 @@
   .panel {
     right: 3%;
     top: 50%;
-    width: 44%;
-    min-width: 205px;
-    padding: 13px 7px 6px;
+    width: clamp(200px, 48%, 260px);
+    padding: 11px 7px 5px;
   }
 
   .row {
-    padding: 8px 10px;
-    gap: 10px;
+    padding: 7px 9px;
+    gap: 8px;
   }
 
   .rowIcon {
@@ -559,67 +558,110 @@
     height: 28px;
   }
 
+  .rowText {
+    min-width: 0;
+  }
+
   .rowText small {
-    max-width: 118px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .panelHeader {
-    padding: 0 10px 6px;
+    padding: 0 9px 5px;
   }
 
   .divider {
-    margin: 1px 10px;
+    margin: 1px 9px;
   }
 }
 
 @media (max-width: 560px) {
+  .visual {
+    height: 230px;
+    min-height: 230px;
+  }
+
   .agent {
-    display: none;
+    left: 2%;
+    transform: translateY(-50%) scale(0.66);
   }
 
   .chatBubble {
-    left: 4%;
-    top: 7%;
+    left: 48px;
+    top: 10px;
+    padding: 6px 10px;
+    display: flex;
   }
 
+  .chatText {
+    font-size: 11px;
+  }
+
+  .chatIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .panel {
+    width: clamp(190px, 56%, 230px);
+    right: 2%;
+    padding: 9px 6px 5px;
+  }
+
+  .rowText b {
+    font-size: 11.5px;
+  }
+
+  .rowText small {
+    font-size: 9px;
+    max-width: 100%;
+  }
+
+  .copyBtn {
+    padding: 11px 16px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
   .visual {
     height: 220px;
     min-height: 220px;
   }
 
-  .panel {
-    width: 50%;
-    right: 3%;
-  }
-
-  .rowText small {
-    max-width: 116px;
-  }
-}
-
-@media (max-width: 420px) {
-  .chatBubble {
-    display: none;
-  }
-
-  .panel {
-    width: 52%;
-  }
-}
-
-@media (max-width: 380px) {
   .agent {
-    display: none;
+    left: 0;
+    transform: translateY(-50%) scale(0.56);
   }
 
   .chatBubble {
-    left: 4%;
-    top: 8%;
+    left: 44px;
+    top: 8px;
+    padding: 5px 8px;
+    display: flex;
+  }
+
+  .chatText span {
+    font-size: 10px;
   }
 
   .panel {
-    right: 3%;
-    width: 50%;
+    right: 2%;
+    width: clamp(180px, 58%, 210px);
+  }
+
+  .row {
+    padding: 6px 7px;
+    gap: 6px;
+  }
+
+  .rowIcon {
+    width: 24px;
+    height: 24px;
   }
 }
 

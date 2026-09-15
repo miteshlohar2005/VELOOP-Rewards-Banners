@@ -378,41 +378,20 @@
 
 @media (max-width: 999px) {
   .visual {
-    height: 252px;
-    min-height: 252px;
+    height: 250px;
+    min-height: 250px;
   }
 
   .todayCard {
-    top: 24px;
-    left: 4%;
-  }
-
-  .giftBox {
-    width: 154px;
-    height: 132px;
+    top: 14px;
+    right: 3%;
+    left: auto;
+    padding: 10px 14px;
   }
 
   .giftStage {
-    top: 44%;
-  }
-
-  .streakCard {
-    width: 250px;
-    bottom: 20px;
-    right: 3%;
-  }
-}
-
-@media (max-width: 767px) {
-  .visual {
-    height: 240px;
-    min-height: 240px;
-  }
-
-  .todayCard {
-    top: 18px;
-    left: 3%;
-    padding: 10px 13px;
+    top: 42%;
+    left: 48%;
   }
 
   .giftBox {
@@ -420,64 +399,52 @@
     height: 124px;
   }
 
-  .giftLid {
-    width: 118px;
-    height: 23px;
-    top: -20px;
-  }
-
-  .gemIcon {
-    width: 40px;
-    height: 40px;
-  }
-
   .streakCard {
-    width: 244px;
-    bottom: 16px;
+    width: 246px;
+    bottom: 14px;
     right: 3%;
-    padding: 11px 13px;
-  }
-
-  .day {
-    width: 26px;
-    height: 26px;
-  }
-
-  .days {
-    gap: 6px;
-    margin-top: 11px;
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 767px) {
   .visual {
-    height: 224px;
-    min-height: 224px;
+    height: 242px;
+    min-height: 242px;
   }
 
   .todayCard {
-    top: 14px;
-    left: 3%;
+    top: 12px;
+    right: 2.5%;
+    left: auto;
+    padding: 9px 12px;
   }
 
-  .todayText strong {
-    font-size: 17px;
+  .giftStage {
+    top: 41%;
+    left: 48%;
   }
 
   .giftBox {
-    width: 136px;
-    height: 118px;
+    width: 134px;
+    height: 114px;
   }
 
   .giftLid {
-    width: 112px;
+    width: 108px;
     height: 21px;
-    top: -18px;
+    top: -17px;
+  }
+
+  .gemIcon {
+    width: 38px;
+    height: 38px;
   }
 
   .streakCard {
-    width: 236px;
-    right: 2%;
+    width: 232px;
+    bottom: 12px;
+    right: 2.5%;
+    padding: 10px 12px;
   }
 
   .day {
@@ -486,22 +453,163 @@
   }
 
   .days {
-    gap: 5px;
+    gap: 4px;
+    margin-top: 9px;
+  }
+}
+
+@media (max-width: 560px) {
+  .visual {
+    height: 232px;
+    min-height: 232px;
+  }
+
+  .todayCard {
+    top: 10px;
+    right: 2%;
+    left: auto;
+    padding: 7px 10px;
+    gap: 8px;
+    display: flex;
+  }
+
+  .todayIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .todayText small {
+    font-size: 8.5px;
+  }
+
+  .todayText strong {
+    font-size: 14px;
+  }
+
+  .todayText span {
+    font-size: 9px;
+  }
+
+  .giftStage {
+    top: 40%;
+    left: 46%;
+  }
+
+  .giftBox {
+    width: 118px;
+    height: 100px;
+  }
+
+  .giftLid {
+    width: 96px;
+    height: 18px;
+    top: -15px;
+  }
+
+  .gemIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .streakCard {
+    width: clamp(208px, 64%, 224px);
+    right: 2%;
+    bottom: 10px;
+    padding: 8px 10px;
+  }
+
+  .streakHead b {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .streakPercent {
+    font-size: 8.5px;
+  }
+
+  .day {
+    width: clamp(19px, 5.2vw, 22px);
+    height: clamp(19px, 5.2vw, 22px);
+    font-size: 9px;
+  }
+
+  .days {
+    gap: clamp(2px, 1vw, 4px);
+    margin-top: 8px;
+  }
+
+  .streakFoot {
+    margin-top: 8px;
+    padding-top: 6px;
+  }
+
+  .streakFoot strong {
+    font-size: 10.5px;
+  }
+
+  .streakFoot small {
+    font-size: 9px;
   }
 }
 
 @media (max-width: 380px) {
+  .visual {
+    height: 222px;
+    min-height: 222px;
+  }
+
   .todayCard {
-    display: none;
+    top: 8px;
+    right: 1.5%;
+    padding: 5px 8px;
+    gap: 6px;
+    display: flex;
+  }
+
+  .todayIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .todayText strong {
+    font-size: 12px;
+  }
+
+  .giftStage {
+    top: 39%;
+    left: 44%;
+  }
+
+  .giftBox {
+    width: 108px;
+    height: 92px;
+  }
+
+  .giftLid {
+    width: 88px;
+    height: 16px;
+    top: -13px;
+  }
+
+  .gemIcon {
+    width: 30px;
+    height: 30px;
   }
 
   .streakCard {
-    width: 222px;
+    width: clamp(198px, 72%, 212px);
+    padding: 7px 9px;
+    bottom: 8px;
   }
 
   .day {
-    width: 23px;
-    height: 23px;
+    width: clamp(17px, 5vw, 20px);
+    height: clamp(17px, 5vw, 20px);
+    font-size: 8.5px;
+  }
+
+  .days {
+    gap: 2px;
   }
 }
 

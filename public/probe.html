@@ -1,0 +1,226 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VELOOP mobile-overlap probe</title>
+    <style>
+      body { background: #161827; margin: 0; padding: 16px; font-family: sans-serif; color: #cbd2e0; }
+      h1 { font-size: 14px; }
+      .row { margin-bottom: 14px; }
+      iframe { display: block; border: 1px solid #2a2f42; }
+      pre { white-space: pre-wrap; font-size: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>VELOOP mobile overlap probe</h1>
+    <div id="frames"></div>
+    <pre id="out"></pre>
+    <script>
+      const SIZES = [360, 390, 400, 430, 560, 768];
+      const results = {};
+
+      function r(win, el) {
+        if (!el) return null;
+        const b = el.getBoundingClientRect();
+        return { x: b.x, y: b.y, w: b.width, h: b.height, r: b.right, b: b.bottom };
+      }
+      function rel(r, vr) {
+        if (!r) return null;
+        return {
+          L: Math.round(r.x - vr.x),
+          T: Math.round(r.y - vr.y),
+          R: Math.round(r.r - vr.x),
+          B: Math.round(r.b - vr.y),
+          w: Math.round(r.w),
+          h: Math.round(r.h)
+        };
+      }
+      function inter(a, b) {
+        const w = Math.min(a.r, b.r) - Math.max(a.x, b.x);
+        const h = Math.min(a.b, b.b) - Math.max(a.y, b.y);
+        return { w: Math.max(0, w), h: Math.max(0, h), a: Math.max(0, w * h) };
+      }
+      function q(visual, cls) {
+        return visual.querySelector('[class*="' + cls + '"]');
+      }
+
+      function measureVisual(section) {
+        const visual = section.children[1];
+        const vr = visual.getBoundingClientRect();
+        const label = section.getAttribute("aria-label");
+        const B = {};
+        const rec = { label: label.slice(0, 22), meta: { vw: Math.round(vr.width), vh: Math.round(vr.height) }, items: {}, pairs: [] };
+        if (label.indexOf("Leaderboard") === 0) {
+          B.pool = q(visual, "poolChip");
+          B.xp = q(visual, "xpChip");
+          B.orb = q(visual, "trophyOrb");
+          B.mount = q(visual, "trophyMount");
+          B.podium = q(visual, "rankCard");
+          B.center = visual.querySelector('[class*="rankCard"][class*="first"]');
+          B.ghost = q(visual, "chartGhost");
+          ["pool", "xp", "orb", "mount", "center", "ghost"].forEach((k) => {
+            const b = r(null, B[k]);
+            if (b) rec.items[k] = rel(b, vr);
+          });
+          const pairs = [
+            ["pool", "orb"],
+            ["xp", "orb"],
+            ["mount", "center"],
+            ["orb", "center"],
+            ["pool", "center"],
+            ["xp", "center"]
+          ];
+          pairs.forEach(([a, b]) => {
+            const ra = r(null, B[a]);
+            const rb = r(null, B[b]);
+            if (ra && rb) {
+              const it = inter(ra, rb);
+              if (it.a > 0) rec.pairs.push(a + "Ã—" + b + " = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+            }
+          });
+        } else if (label.indexOf("Watch") === 0) {
+          B.device = q(visual, "device");
+          B.wallet = q(visual, "wallet");
+          B.walletIcon = q(visual, "walletIcon");
+          B.walletAmt = q(visual, "walletAmount");
+          B.steps = q(visual, "steps");
+          ["device", "wallet", "steps"].forEach((k) => {
+            const b = r(null, B[k]);
+            if (b) rec.items[k] = rel(b, vr);
+          });
+          const ra = r(null, B.device);
+          const rb = r(null, B.wallet);
+          const rc = r(null, B.steps);
+          if (ra && rb) {
+            const it = inter(ra, rb);
+            if (it.a > 0) rec.pairs.push("deviceÃ—wallet = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+          }
+          if (rc && rb) {
+            const it = inter(rc, rb);
+            if (it.a > 0) rec.pairs.push("stepsÃ—wallet = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+          }
+        } else if (label.indexOf("Follow") === 0) {
+          const phones = visual.querySelectorAll('[class*="phone"]');
+          let best = null;
+          let bestArea = 0;
+          phones.forEach((p) => {
+            const br = p.getBoundingClientRect();
+            const a = br.width * br.height;
+            if (a > bestArea) {
+              bestArea = a;
+              best = p;
+            }
+          });
+          B.phone = best;
+          B.notif = q(visual, "notification");
+          B.reward = q(visual, "rewardFloat");
+          B.heart = q(visual, "heartFloat");
+          B.orbA = q(visual, "orbA");
+          B.orbD = q(visual, "orbD");
+          ["phone", "notif", "reward", "heart", "orbA", "orbD"].forEach((k) => {
+            const b = r(null, B[k]);
+            if (b) rec.items[k] = rel(b, vr);
+          });
+          const pairs = [
+            ["phone", "notif"],
+            ["phone", "reward"],
+            ["phone", "heart"],
+            ["notif", "reward"],
+            ["reward", "orbD"]
+          ];
+          pairs.forEach(([a, b]) => {
+            const ra = r(null, B[a]);
+            const rb = r(null, B[b]);
+            if (ra && rb) {
+              const it = inter(ra, rb);
+              if (it.a > 0) rec.pairs.push(a + "Ã—" + b + " = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+            }
+          });
+        } else if (label.indexOf("Daily") === 0) {
+          B.gift = q(visual, "giftBox");
+          B.stage = q(visual, "giftStage");
+          B.today = q(visual, "todayCard");
+          B.streak = q(visual, "streakCard");
+          ["stage", "today", "streak"].forEach((k) => {
+            const b = r(null, B[k]);
+            if (b) rec.items[k] = rel(b, vr);
+          });
+          const pairs = [
+            ["today", "stage"],
+            ["stage", "streak"],
+            ["today", "streak"]
+          ];
+          pairs.forEach(([a, b]) => {
+            const ra = r(null, B[a]);
+            const rb = r(null, B[b]);
+            if (ra && rb) {
+              const it = inter(ra, rb);
+              if (it.a > 0) rec.pairs.push(a + "Ã—" + b + " = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+            }
+          });
+        } else if (label.indexOf("Contact") === 0) {
+          B.agent = q(visual, "agentNameplate");
+          B.avatar = visual.querySelector('[class*="agentAvatar"]');
+          B.chat = q(visual, "chatBubble");
+          B.panel = q(visual, "panel");
+          ["agent", "avatar", "chat", "panel"].forEach((k) => {
+            const b = r(null, B[k]);
+            if (b) rec.items[k] = rel(b, vr);
+          });
+          const pairs = [
+            ["agent", "chat"],
+            ["agent", "panel"],
+            ["avatar", "chat"],
+            ["chat", "panel"]
+          ];
+          pairs.forEach(([a, b]) => {
+            const ra = r(null, B[a]);
+            const rb = r(null, B[b]);
+            if (ra && rb) {
+              const it = inter(ra, rb);
+              if (it.a > 0) rec.pairs.push(a + "Ã—" + b + " = " + it.w + "Ã—" + it.h + " (" + Math.round(it.a) + "px)");
+            }
+          });
+        }
+        return rec;
+      }
+
+      function measureAll(win) {
+        const doc = win.document;
+        const res = { viewport: doc.documentElement.clientWidth, scrollW: doc.documentElement.scrollWidth, banners: [] };
+        doc.querySelectorAll("section[aria-label]").forEach((s) => res.banners.push(measureVisual(s)));
+        return res;
+      }
+
+      const frames = document.getElementById("frames");
+      const out = document.getElementById("out");
+
+      SIZES.forEach((size) => {
+        results[size] = null;
+        const row = document.createElement("div");
+        row.className = "row";
+        const label = document.createElement("b");
+        label.textContent = "Width " + size + "px ";
+        row.appendChild(label);
+        const frame = document.createElement("iframe");
+        frame.src = "/";
+        frame.width = size;
+        frame.height = 4200;
+        frame.setAttribute("scrolling", "no");
+        row.appendChild(frame);
+        frames.appendChild(row);
+        frame.addEventListener("load", () => {
+          setTimeout(() => {
+            try {
+              results[size] = measureAll(frame.contentWindow);
+            } catch (err) {
+              results[size] = { error: String(err) };
+            }
+            out.textContent = JSON.stringify(results, null, 2);
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -10,8 +10,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 15px;
-  padding: 52px clamp(30px, 3.4vw, 60px) 40px clamp(64px, 5.2vw, 96px);
+  gap: 13px;
+  padding: 46px clamp(30px, 3.4vw, 60px) 36px clamp(64px, 5.2vw, 96px);
   min-width: 0;
 }
 
@@ -59,8 +59,8 @@
 
 @media (min-width: 1000px) and (max-width: 1199px) {
   .copy {
-    padding: 44px clamp(24px, 3vw, 40px) 36px clamp(56px, 5vw, 72px);
-    gap: 14px;
+    padding: 40px clamp(24px, 3vw, 40px) 32px clamp(56px, 5vw, 72px);
+    gap: 12px;
   }
 
   .heading {
@@ -129,6 +129,20 @@
 
   .ctaRow {
     gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .ctaRow > * {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
   }
 }
 

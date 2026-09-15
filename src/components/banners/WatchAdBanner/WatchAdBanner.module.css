@@ -427,43 +427,45 @@
 
 @media (max-width: 999px) {
   .visual {
-    height: 248px;
-    min-height: 248px;
+    height: 250px;
+    min-height: 250px;
   }
 
   .device {
-    left: 48%;
-    width: 224px;
+    left: 50%;
+    width: 220px;
     top: 46%;
   }
 
   .playButton {
-    width: 58px;
-    height: 58px;
+    width: 56px;
+    height: 56px;
   }
 
   .coinA {
-    right: 3%;
-    top: 14%;
+    right: 4%;
+    top: 56px;
   }
 
   .coinB {
-    right: 24%;
-    top: 36%;
+    right: 22%;
+    top: 42%;
   }
 
   .coinC {
-    left: 7%;
-    top: 20%;
+    left: 52px;
+    top: 16px;
   }
 
   .wallet {
-    bottom: 70px;
-    right: 4%;
+    top: 14px;
+    right: 3%;
+    padding: 9px 12px;
+    min-width: 130px;
   }
 
   .steps {
-    bottom: 18px;
+    bottom: 14px;
   }
 
   .step {
@@ -479,25 +481,107 @@
 
 @media (max-width: 560px) {
   .visual {
-    height: 232px;
-    min-height: 232px;
+    height: 240px;
+    min-height: 240px;
   }
 
   .device {
-    width: 208px;
+    width: 190px;
+    left: 50%;
     top: 44%;
   }
 
   .playButton {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .coinA {
+    right: 3%;
+    top: 60px;
+    width: 32px;
+    height: 32px;
+    font-size: 8.5px;
+  }
+
+  .coinB {
+    right: 18%;
+    top: 44%;
+    width: 28px;
+    height: 28px;
+    font-size: 8px;
+  }
+
+  .coinC {
+    left: 50px;
+    top: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 8.5px;
+  }
+
+  .wallet {
+    top: 12px;
+    right: 2%;
+    min-width: 110px;
+    padding: 7px 9px;
+    gap: 7px;
+  }
+
+  .walletIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+  }
+
+  .walletText small {
+    font-size: 8.5px;
+  }
+
+  .walletText strong {
+    font-size: 13px;
+  }
+
+  .steps {
+    bottom: 10px;
+  }
+
+  .step {
+    padding: 4px 7px;
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .stepIndex {
+    width: 18px;
+    height: 18px;
+    font-size: 9.5px;
+  }
+
+  .step::after {
+    width: 8px;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .visual {
+    height: 230px;
+    min-height: 230px;
+  }
+
+  .device {
+    width: 172px;
+    left: 50%;
+    top: 43%;
   }
 
   .coinA {
     right: 2%;
-    top: 10%;
-    width: 34px;
-    height: 34px;
+    top: 54px;
+    width: 26px;
+    height: 26px;
+    font-size: 7.5px;
   }
 
   .coinB {
@@ -505,51 +589,49 @@
   }
 
   .coinC {
-    left: 4%;
-    top: 16%;
-    width: 38px;
-    height: 38px;
+    left: 46px;
+    top: 12px;
+    width: 26px;
+    height: 26px;
+    font-size: 7.5px;
   }
 
   .wallet {
-    bottom: 54px;
-    right: 3%;
-    min-width: 132px;
-    padding: 9px 12px;
+    top: 10px;
+    right: 2%;
+    min-width: 0;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .walletIcon {
+    width: 26px;
+    height: 26px;
   }
 
   .walletText strong {
-    font-size: 15px;
+    font-size: 11.5px;
   }
 
   .steps {
-    bottom: 12px;
+    bottom: 8px;
   }
 
   .step {
-    padding: 5px 8px;
-    font-size: 10.5px;
+    padding: 3px 5px;
+    font-size: 9.5px;
+    gap: 4px;
+  }
+
+  .stepIndex {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
   }
 
   .step::after {
-    width: 10px;
-    margin-left: 10px;
-  }
-}
-
-@media (max-width: 380px) {
-  .device {
-    width: 192px;
-    left: 44%;
-  }
-
-  .coinA,
-  .coinC {
-    display: none;
-  }
-
-  .wallet {
-    min-width: 0;
+    width: 6px;
+    margin-left: 6px;
   }
 }
 
