@@ -6,18 +6,7 @@ import BannerCTA from "../../ui/BannerCTA";
 import RewardPill from "../../ui/RewardPill";
 import copy from "../../../styles/copy.module.css";
 import styles from "./WatchAdBanner.module.css";
-
-const STEPS = [
-  { key: "watch", label: "Watch" },
-  { key: "complete", label: "Complete" },
-  { key: "earn", label: "Earn" }
-];
-
-const COINS = [
-  { className: styles.coinA },
-  { className: styles.coinB },
-  { className: styles.coinC }
-];
+import watchAdIllustration from "../../../assets/watch-ad-illustration.png";
 
 export default function WatchAdBanner() {
   const [phase, setPhase] = useState("idle"); // idle | watching | done
@@ -31,8 +20,6 @@ export default function WatchAdBanner() {
   };
 
   useEffect(() => () => clearTimeout(timer.current), []);
-
-  const activeStep = phase === "done" ? 2 : phase === "watching" ? 1 : 0;
 
   const ctaLabel =
     phase === "watching"
@@ -91,43 +78,12 @@ export default function WatchAdBanner() {
       <div className={styles.visual}>
         <div className={styles.baseGlow} aria-hidden="true" />
 
-        <div className={`${styles.device} ${phase === "watching" ? styles.devicePlaying : ""}`}>
-          <div className={styles.deviceTop}>
-            <span className={styles.adTag}>AD</span>
-            <span className={styles.duration}>
-              {phase === "done" ? "00:00" : "00:30"}
-            </span>
-          </div>
-
-          <div
-            className={`${styles.playButton} ${phase === "done" ? styles.playDone : ""}`}
-            aria-hidden="true"
-          >
-            {phase === "done" ? (
-              <Check size={30} strokeWidth={3} />
-            ) : (
-              <Play size={30} fill="currentColor" strokeWidth={2.2} />
-            )}
-          </div>
-
-          <div className={styles.progress} aria-hidden="true">
-            <i className={phase === "watching" ? styles.progressActive : ""} />
-          </div>
-
-          <span className={styles.screenCaption}>
-            {phase === "idle"
-              ? "Tap Watch & Earn to preview"
-              : phase === "watching"
-                ? "Playing ad — complete to earn"
-                : "Ad completed — reward credited"}
-          </span>
-        </div>
-
-        {COINS.map((coin, index) => (
-          <span key={index} className={`${styles.coin} ${coin.className}`} aria-hidden="true">
-            VE
-          </span>
-        ))}
+        <img
+          className={styles.illustration}
+          src={watchAdIllustration}
+          alt="Ad video player with a VE wallet and coins for watching and earning"
+          draggable="false"
+        />
 
         <div className={`${styles.wallet} ${phase === "done" ? styles.walletCredited : ""}`} aria-live="polite">
           <span className={styles.walletIcon}>
@@ -145,26 +101,6 @@ export default function WatchAdBanner() {
             </span>
           )}
         </div>
-
-        <ol className={styles.steps} aria-label="Watch complete earn steps">
-          {STEPS.map((step, index) => (
-            <li
-              key={step.key}
-              className={`${styles.step} ${
-                index < activeStep
-                  ? styles.stepDone
-                  : index === activeStep
-                    ? styles.stepActive
-                    : ""
-              }`}
-            >
-              <span className={styles.stepIndex}>
-                {index < activeStep ? <Check size={12} strokeWidth={3} /> : index + 1}
-              </span>
-              {step.label}
-            </li>
-          ))}
-        </ol>
       </div>
     </RewardBannerShell>
   );

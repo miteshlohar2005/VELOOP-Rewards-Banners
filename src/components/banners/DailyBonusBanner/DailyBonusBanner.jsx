@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Gift, Check, CalendarCheck2, Gem, Coins } from "lucide-react";
+import { Gift, Check, CalendarCheck2, Coins } from "lucide-react";
 import RewardBannerShell from "../../ui/RewardBannerShell";
 import BannerBadge from "../../ui/BannerBadge";
 import BannerCTA from "../../ui/BannerCTA";
 import RewardPill from "../../ui/RewardPill";
 import copy from "../../../styles/copy.module.css";
 import styles from "./DailyBonusBanner.module.css";
-
-const STREAK_DAYS = [1, 2, 3, 4, 5, 6, 7];
+import dailyBonusIllustration from "../../../assets/daily-bonus-illustration.png";
 
 export default function DailyBonusBanner() {
   const [claimed, setClaimed] = useState(false);
@@ -62,6 +61,13 @@ export default function DailyBonusBanner() {
       <div className={styles.visual}>
         <div className={styles.baseGlow} aria-hidden="true" />
 
+        <img
+          className={styles.illustration}
+          src={dailyBonusIllustration}
+          alt="Gift box with a VE coin and surrounding coins for the daily bonus"
+          draggable="false"
+        />
+
         <div className={styles.todayCard} aria-live="polite">
           <span className={styles.todayIcon}>
             <Gift size={16} strokeWidth={2.2} />
@@ -72,57 +78,6 @@ export default function DailyBonusBanner() {
             <span>
               {claimed ? "Next reset tomorrow" : "Available now"}
             </span>
-          </div>
-        </div>
-
-        <div className={styles.giftStage}>
-          <div className={`${styles.giftBox} ${claimed ? styles.giftOpen : ""}`}>
-            <span className={`${styles.giftLid} ${claimed ? styles.lidLift : ""}`} aria-hidden="true" />
-            <span className={styles.giftBody} aria-hidden="true">
-              <Gem
-                size={46}
-                strokeWidth={1.5}
-                className={styles.gemIcon}
-                aria-hidden="true"
-              />
-            </span>
-          </div>
-        </div>
-
-        <div className={styles.coins} aria-hidden="true">
-          <span className={`${styles.riseCoin} ${styles.coinOne}`}>+10</span>
-          <span className={`${styles.riseCoin} ${styles.coinTwo}`}>+5</span>
-          <span className={`${styles.riseCoin} ${styles.coinThree}`}>+10</span>
-        </div>
-
-        <div className={styles.streakCard} aria-label="7-day bonus streak">
-          <div className={styles.streakHead}>
-            <span className={styles.streakIcon}>
-              <CalendarCheck2 size={15} strokeWidth={2.2} />
-            </span>
-            <b>7-DAY STREAK</b>
-            <span className={styles.streakPercent} aria-hidden="true">
-              {claimed ? "100%" : "86%"}
-            </span>
-          </div>
-          <div className={styles.days}>
-            {STREAK_DAYS.map((day) => (
-              <span
-                key={day}
-                className={`${styles.day} ${claimed || day < 7 ? styles.dayDone : ""}`}
-                aria-hidden="true"
-              >
-                {claimed || day < 7 ? <Check size={11} strokeWidth={3.2} /> : day}
-              </span>
-            ))}
-          </div>
-          <div className={styles.streakFoot}>
-            <strong>
-              {claimed ? "7/7 — Streak complete" : "6 days completed"}
-            </strong>
-            <small>
-              {claimed ? "Back tomorrow for the next cycle" : "Come back tomorrow!"}
-            </small>
           </div>
         </div>
       </div>
