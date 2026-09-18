@@ -141,7 +141,7 @@ export default function ContactBanner() {
 
           <div className={styles.divider} aria-hidden="true" />
 
-          <div className={styles.row}>
+          <div className={`${styles.row} ${styles.rowStatic}`}>
             <span className={styles.rowIcon}>
               <LifeBuoy size={15} strokeWidth={2.2} />
             </span>

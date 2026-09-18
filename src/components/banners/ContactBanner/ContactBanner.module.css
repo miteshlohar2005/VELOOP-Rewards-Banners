@@ -143,6 +143,18 @@
   background: rgba(255, 255, 255, 0.045);
 }
 
+.rowStatic {
+  cursor: default;
+}
+
+.rowStatic .rowChevron {
+  display: none;
+}
+
+.rowStatic .comingSoon {
+  margin-right: 4px;
+}
+
 .rowIcon {
   width: 34px;
   height: 34px;
@@ -180,6 +192,9 @@
 .rowChevron {
   color: #5d6e88;
   flex-shrink: 0;
+  transition:
+    transform 0.22s var(--vr-ease),
+    color 0.22s var(--vr-ease);
 }
 
 .comingSoon {
@@ -339,6 +354,15 @@
   .rowIcon {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* ---------- Micro-interactions (pointer devices only) ---------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .rowChevron {
+    transform: translateX(2px);
+    color: #b8cde6;
   }
 }
 
