@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, Mail, Copy, Check } from "lucide-react";
+import {
+  MessageCircle,
+  Mail,
+  ChevronRight,
+  Copy,
+  Check,
+  Headphones,
+  LifeBuoy,
+  Send
+} from "lucide-react";
 import RewardBannerShell from "../../ui/RewardBannerShell";
 import BannerBadge from "../../ui/BannerBadge";
 import BannerCTA from "../../ui/BannerCTA";
@@ -81,6 +90,68 @@ export default function ContactBanner() {
           alt="VELOOP support agent with a headset and chat for customer support"
           draggable="false"
         />
+
+        <div className={styles.panel}>
+          <div className={styles.panelHeader}>
+            <span className={styles.panelTitle}>
+              <Headphones size={15} strokeWidth={2.2} />
+              We&apos;re here to help
+            </span>
+          </div>
+
+          <a className={styles.row} href={`mailto:${SUPPORT_EMAIL}`}>
+            <span className={styles.rowIcon}>
+              <Mail size={15} strokeWidth={2.2} />
+            </span>
+            <span className={styles.rowText}>
+              <b>Email Us</b>
+              <small>{SUPPORT_EMAIL}</small>
+            </span>
+            <ChevronRight size={16} className={styles.rowChevron} />
+          </a>
+
+          <div className={styles.divider} aria-hidden="true" />
+
+          <button type="button" className={styles.row} onClick={copyEmail}>
+            <span className={styles.rowIcon}>
+              {copied ? <Check size={15} strokeWidth={2.4} /> : <Copy size={15} strokeWidth={2.2} />}
+            </span>
+            <span className={styles.rowText}>
+              <b>{copied ? "Copied!" : "Copy Email"}</b>
+              <small>One-tap copy to clipboard</small>
+            </span>
+            <ChevronRight size={16} className={styles.rowChevron} />
+          </button>
+
+          <div className={styles.divider} aria-hidden="true" />
+
+          <a
+            className={styles.row}
+            href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("VELOOP Support Ticket")}`}
+          >
+            <span className={styles.rowIcon}>
+              <Send size={15} strokeWidth={2.2} />
+            </span>
+            <span className={styles.rowText}>
+              <b>Submit a Ticket</b>
+              <small>Open support email</small>
+            </span>
+            <ChevronRight size={16} className={styles.rowChevron} />
+          </a>
+
+          <div className={styles.divider} aria-hidden="true" />
+
+          <div className={styles.row}>
+            <span className={styles.rowIcon}>
+              <LifeBuoy size={15} strokeWidth={2.2} />
+            </span>
+            <span className={styles.rowText}>
+              <b>Help Center</b>
+              <small>Coming soon</small>
+            </span>
+            <span className={styles.comingSoon}>Soon</span>
+          </div>
+        </div>
       </div>
     </RewardBannerShell>
   );

@@ -8,6 +8,8 @@ import copy from "../../../styles/copy.module.css";
 import styles from "./DailyBonusBanner.module.css";
 import dailyBonusIllustration from "../../../assets/daily-bonus-illustration.png";
 
+const STREAK_DAYS = [1, 2, 3, 4, 5, 6, 7];
+
 export default function DailyBonusBanner() {
   const [claimed, setClaimed] = useState(false);
 
@@ -78,6 +80,37 @@ export default function DailyBonusBanner() {
             <span>
               {claimed ? "Next reset tomorrow" : "Available now"}
             </span>
+          </div>
+        </div>
+
+        <div className={styles.streakCard} aria-label="7-day bonus streak">
+          <div className={styles.streakHead}>
+            <span className={styles.streakIcon}>
+              <CalendarCheck2 size={15} strokeWidth={2.2} />
+            </span>
+            <b>7-DAY STREAK</b>
+            <span className={styles.streakPercent} aria-hidden="true">
+              {claimed ? "100%" : "86%"}
+            </span>
+          </div>
+          <div className={styles.days}>
+            {STREAK_DAYS.map((day) => (
+              <span
+                key={day}
+                className={`${styles.day} ${claimed || day < 7 ? styles.dayDone : ""}`}
+                aria-hidden="true"
+              >
+                {claimed || day < 7 ? <Check size={11} strokeWidth={3.2} /> : day}
+              </span>
+            ))}
+          </div>
+          <div className={styles.streakFoot}>
+            <strong>
+              {claimed ? "7/7 — Streak complete" : "6 Days Completed"}
+            </strong>
+            <small>
+              {claimed ? "Back tomorrow for the next cycle" : "Come back tomorrow!"}
+            </small>
           </div>
         </div>
       </div>

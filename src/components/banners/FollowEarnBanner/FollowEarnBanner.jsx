@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Bell, Check, BadgeCheck, Megaphone, UsersRound } from "lucide-react";
+import {
+  Bell,
+  Check,
+  BadgeCheck,
+  Megaphone,
+  UsersRound,
+  Coins
+} from "lucide-react";
 import RewardBannerShell from "../../ui/RewardBannerShell";
 import BannerBadge from "../../ui/BannerBadge";
 import BannerCTA from "../../ui/BannerCTA";
@@ -63,6 +70,27 @@ export default function FollowEarnBanner() {
           alt="Phone showing the VELOOP social profile for following and earning rewards"
           draggable="false"
         />
+
+        <div className={styles.campaignCard}>
+          <div className={styles.cardHead}>
+            <span className={styles.cardIcon}>
+              <Megaphone size={14} strokeWidth={2.2} />
+            </span>
+            <div className={styles.cardTitle}>
+              <b>Demo Campaign</b>
+              <small>Eligible · active</small>
+            </div>
+          </div>
+          <div className={styles.cardReward}>
+            <span className={styles.cardCoin}>
+              <Coins size={15} strokeWidth={2.2} />
+            </span>
+            <strong>+500 SVEs</strong>
+          </div>
+          <p className={styles.cardDesc}>
+            Participate in eligible social campaigns and unlock rewards.
+          </p>
+        </div>
 
         <div className={styles.rewardFloat} aria-hidden="true">
           <RewardPill tone="violet" icon={<BadgeCheck size={13} />}>

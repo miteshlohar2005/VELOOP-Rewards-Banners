@@ -43,7 +43,7 @@
 
 .illustration {
   position: absolute;
-  inset: 0;
+  inset: 12px 8px;
   margin: auto;
   z-index: 2;
   max-width: 100%;
@@ -64,9 +64,97 @@
   }
 }
 
+/* ---------- Campaign card ---------- */
+
+.campaignCard {
+  position: absolute;
+  left: 5%;
+  bottom: 24px;
+  z-index: 4;
+  width: 252px;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #201735, #121020);
+  border: 1px solid rgba(168, 131, 247, 0.34);
+  box-shadow:
+    0 22px 44px -16px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: floatSoft 5s ease-in-out 0.3s infinite;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cardIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(168, 131, 247, 0.14);
+  border: 1px solid rgba(168, 131, 247, 0.3);
+  color: #cfb6ff;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cardTitle b {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f0e9fc;
+}
+
+.cardTitle small {
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  color: #a08cc0;
+}
+
+.cardReward {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.cardCoin {
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: rgba(168, 131, 247, 0.12);
+  border: 1px solid rgba(168, 131, 247, 0.3);
+  color: #ffd979;
+}
+
+.cardReward strong {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffe3a3;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardDesc {
+  margin-top: 9px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: #b7a6d4;
+}
+
+/* ---------- Eligible reward indicator ---------- */
+
 .rewardFloat {
   position: absolute;
-  bottom: 28px;
+  top: 26px;
   right: 6%;
   z-index: 4;
   box-shadow: 0 16px 34px -12px rgba(0, 0, 0, 0.55);
@@ -91,9 +179,27 @@
     min-height: 250px;
   }
 
-  .rewardFloat {
+  .illustration {
+    inset: 6px 10px;
+  }
+
+  .campaignCard {
+    left: 3%;
     bottom: 16px;
+    width: 224px;
+    padding: 11px 13px;
+  }
+
+  .rewardFloat {
+    top: 14px;
     right: 3%;
+  }
+}
+
+@media (max-width: 767px) {
+  .visual {
+    height: 245px;
+    min-height: 245px;
   }
 }
 
@@ -103,9 +209,34 @@
     min-height: 235px;
   }
 
-  .rewardFloat {
+  .illustration {
+    inset: 5px 6px;
+  }
+
+  .campaignCard {
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 12px;
-    right: 2%;
+    width: clamp(196px, 72%, 240px);
+    padding: 9px 12px;
+  }
+
+  .cardReward strong {
+    font-size: 17px;
+  }
+
+  .cardDesc {
+    font-size: 9.5px;
+    margin-top: 7px;
+  }
+
+  .rewardFloat {
+    top: 10px;
+    right: 3%;
+  }
+
+  .cardTitle small {
+    display: none;
   }
 }
 
@@ -115,14 +246,38 @@
     min-height: 225px;
   }
 
-  .rewardFloat {
+  .campaignCard {
     bottom: 10px;
-    right: 1.5%;
+    width: clamp(178px, 74%, 214px);
+    padding: 8px 10px;
+  }
+
+  .cardHead {
+    gap: 7px;
+  }
+
+  .cardIcon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cardCoin {
+    width: 23px;
+    height: 23px;
+  }
+
+  .cardReward {
+    margin-top: 8px;
+  }
+
+  .rewardFloat {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .illustration,
+  .campaignCard,
   .rewardFloat {
     animation: none;
   }

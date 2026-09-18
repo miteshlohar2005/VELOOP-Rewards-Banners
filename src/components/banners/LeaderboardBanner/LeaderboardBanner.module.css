@@ -53,7 +53,7 @@
 
 .illustration {
   position: absolute;
-  inset: 0;
+  inset: 12px 8px;
   margin: auto;
   z-index: 2;
   max-width: 100%;
@@ -78,10 +78,173 @@
 
 .poolChip {
   position: absolute;
-  top: 30px;
+  top: 28px;
   right: 6%;
-  z-index: 3;
+  z-index: 4;
   box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Ranking row ---------- */
+
+.rankingRow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 24px 20px;
+}
+
+.rankCard {
+  position: relative;
+  width: 120px;
+  height: 122px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 13px 12px 11px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+    #0e1220;
+  border: 1px solid var(--vr-border);
+  box-shadow:
+    0 20px 44px -18px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: floatSoft 5.5s ease-in-out infinite;
+}
+
+.rankCard::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  filter: blur(6px);
+}
+
+.rankCard.gold {
+  border-color: rgba(232, 189, 82, 0.38);
+  background: linear-gradient(180deg, rgba(232, 189, 82, 0.08), rgba(232, 189, 82, 0.02)),
+    #0f1424;
+}
+
+.rankCard.silver {
+  border-color: rgba(196, 208, 228, 0.28);
+}
+
+.rankCard.bronze {
+  border-color: rgba(197, 142, 96, 0.32);
+}
+
+.rankCard.first {
+  width: 134px;
+  height: 146px;
+  border-color: rgba(232, 189, 82, 0.46);
+  background: linear-gradient(180deg, rgba(232, 189, 82, 0.11), rgba(232, 189, 82, 0.02)),
+    #101427;
+  box-shadow:
+    0 30px 60px -22px rgba(0, 0, 0, 0.85),
+    0 0 44px -10px rgba(232, 189, 82, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.rankCard:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.rankCard:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.rankNum {
+  position: absolute;
+  top: 11px;
+  left: 13px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--vr-text-muted);
+}
+
+.rankCard.first .rankNum {
+  color: var(--vr-gold-soft);
+}
+
+.crown {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--vr-gold);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-top: 13px;
+  background: linear-gradient(145deg, var(--a1), var(--a2));
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow:
+    0 10px 20px -8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.rankCard.first .avatar {
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.info {
+  margin-top: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+}
+
+.info strong {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--vr-text);
+}
+
+.veValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--vr-text-soft);
+}
+
+.rankCard.first .veValue {
+  color: var(--vr-gold-soft);
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 /* ---------- Stacked layouts ---------- */
@@ -92,9 +255,72 @@
     min-height: 250px;
   }
 
+  .illustration {
+    inset: 6px 10px;
+  }
+
   .poolChip {
     top: 14px;
     right: 4%;
+  }
+
+  .rankCard {
+    width: 96px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 9px 9px 8px;
+  }
+
+  .rankCard.first {
+    width: 108px;
+    height: 118px;
+  }
+
+  .rankCard::after {
+    bottom: -11px;
+    height: 7px;
+  }
+
+  .rankNum {
+    top: 8px;
+    left: 10px;
+    font-size: 10px;
+  }
+
+  .crown {
+    top: 6px;
+    right: 9px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    margin-top: 9px;
+  }
+
+  .rankCard.first .avatar {
+    width: 41px;
+    height: 41px;
+    font-size: 16px;
+  }
+
+  .info {
+    margin-top: 6px;
+    gap: 2px;
+  }
+
+  .info strong {
+    font-size: 11.5px;
+  }
+
+  .veValue {
+    font-size: 10px;
+  }
+
+  .rankingRow {
+    gap: 9px;
+    padding: 0 16px 12px;
   }
 }
 
@@ -104,11 +330,59 @@
     min-height: 235px;
   }
 
+  .illustration {
+    inset: 5px 6px;
+  }
+
   .poolChip {
     top: 12px;
     right: 3%;
     padding: 6px 11px;
     font-size: 11px;
+  }
+
+  .rankCard {
+    width: clamp(74px, 22vw, 86px);
+    height: 88px;
+    padding: 7px 5px 5px;
+    border-radius: 14px;
+  }
+
+  .rankCard.first {
+    width: clamp(84px, 25vw, 96px);
+    height: 104px;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .rankCard.first .avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .info {
+    margin-top: 4px;
+    gap: 2px;
+  }
+
+  .info strong {
+    font-size: 10.5px;
+  }
+
+  .veValue {
+    font-size: 9px;
+    gap: 3px;
+  }
+
+  .rankingRow {
+    gap: clamp(4px, 1.8vw, 8px);
+    padding: 0 5px 10px;
   }
 }
 
@@ -124,10 +398,49 @@
     padding: 5px 9px;
     font-size: 10px;
   }
+
+  .rankCard {
+    width: clamp(68px, 21vw, 78px);
+    height: 84px;
+    padding: 6px 4px 4px;
+  }
+
+  .rankCard.first {
+    width: clamp(76px, 24vw, 88px);
+    height: 96px;
+  }
+
+  .avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+    margin-top: 5px;
+  }
+
+  .rankCard.first .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 12.5px;
+  }
+
+  .info strong {
+    font-size: 10px;
+  }
+
+  .veValue {
+    font-size: 8px;
+    gap: 2px;
+  }
+
+  .rankingRow {
+    gap: 3px;
+    padding: 0 3px 8px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .illustration {
+  .illustration,
+  .rankCard {
     animation: none;
   }
 }

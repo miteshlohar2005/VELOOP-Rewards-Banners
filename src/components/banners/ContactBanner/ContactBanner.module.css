@@ -69,7 +69,7 @@
 
 .illustration {
   position: absolute;
-  inset: 0;
+  inset: 10px 28% 10px 2%;
   margin: auto;
   z-index: 2;
   max-width: 100%;
@@ -90,12 +90,193 @@
   }
 }
 
+/* ---------- Support panel ---------- */
+
+.panel {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 292px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #151d2e, #0d1422);
+  border: 1px solid var(--vr-border-strong);
+  box-shadow:
+    0 30px 60px -22px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  padding: 16px 8px 8px;
+  animation: panelIn 0.8s var(--vr-ease) both;
+}
+
+.panelHeader {
+  padding: 0 12px 12px;
+}
+
+.panelTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #cfe0f5;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.rowIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(147, 180, 222, 0.1);
+  border: 1px solid rgba(147, 180, 222, 0.24);
+  color: #97b6da;
+  flex-shrink: 0;
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.rowText b {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #dde8f6;
+}
+
+.rowText small {
+  font-size: 10px;
+  color: #7e90ac;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowChevron {
+  color: #5d6e88;
+  flex-shrink: 0;
+}
+
+.comingSoon {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #9db3d1;
+  padding: 4px 8px;
+  border-radius: 99px;
+  border: 1px solid rgba(147, 180, 222, 0.24);
+  white-space: nowrap;
+}
+
+.divider {
+  height: 1px;
+  margin: 2px 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 /* ---------- Stacked layouts ---------- */
+
+@media (max-width: 1199px) {
+  .illustration {
+    right: 30%;
+  }
+
+  .panel {
+    right: 3%;
+    width: 276px;
+  }
+}
 
 @media (max-width: 999px) {
   .visual {
     height: 250px;
     min-height: 250px;
+  }
+
+  .illustration {
+    inset: 8px 34% 8px 4%;
+  }
+
+  .panel {
+    right: 3%;
+    width: 250px;
+  }
+}
+
+@media (max-width: 767px) {
+  .visual {
+    height: 242px;
+    min-height: 242px;
+  }
+
+  .illustration {
+    inset: 8px 36% 8px 3%;
+  }
+
+  .panel {
+    right: 2.5%;
+    width: clamp(198px, 42%, 250px);
+    padding: 11px 7px 5px;
+  }
+
+  .row {
+    padding: 7px 9px;
+    gap: 8px;
+  }
+
+  .rowIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .rowText small {
+    font-size: 9px;
+  }
+
+  .panelHeader {
+    padding: 0 9px 5px;
+  }
+
+  .divider {
+    margin: 1px 9px;
   }
 }
 
@@ -103,6 +284,32 @@
   .visual {
     height: 235px;
     min-height: 235px;
+  }
+
+  .illustration {
+    inset: 6px 4px;
+  }
+
+  .panel {
+    right: 2%;
+    bottom: 12px;
+    top: auto;
+    transform: none;
+    width: clamp(178px, 54%, 218px);
+    padding: 9px 6px 5px;
+  }
+
+  .panelHeader {
+    display: none;
+  }
+
+  .rowText b {
+    font-size: 11px;
+  }
+
+  .rowText small {
+    font-size: 8.5px;
+    max-width: 100%;
   }
 
   .copyBtn {
@@ -117,10 +324,27 @@
     height: 225px;
     min-height: 225px;
   }
+
+  .panel {
+    right: 2%;
+    bottom: 10px;
+    width: clamp(166px, 58%, 200px);
+  }
+
+  .row {
+    padding: 6px 7px;
+    gap: 6px;
+  }
+
+  .rowIcon {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .illustration {
+  .illustration,
+  .panel {
     animation: none;
   }
 }

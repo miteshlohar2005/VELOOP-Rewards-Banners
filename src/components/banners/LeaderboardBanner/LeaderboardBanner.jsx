@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Trophy, Coins, TrendingUp } from "lucide-react";
+import { Trophy, Coins, TrendingUp, Crown } from "lucide-react";
 import RewardBannerShell from "../../ui/RewardBannerShell";
 import BannerBadge from "../../ui/BannerBadge";
 import BannerCTA from "../../ui/BannerCTA";
@@ -8,6 +8,21 @@ import copy from "../../../styles/copy.module.css";
 import styles from "./LeaderboardBanner.module.css";
 import leaderboardIllustration from "../../../assets/leaderboard-illustration.png";
 
+const rankings = [
+  { rank: "01", name: "Aarav", value: "12,450", medal: "gold" },
+  { rank: "02", name: "Maya", value: "11,820", medal: "silver" },
+  { rank: "03", name: "Riya", value: "10,970", medal: "bronze" }
+];
+
+const AVATAR_GRADIENTS = {
+  gold: ["#ffe1a6", "#c98e2a"],
+  silver: ["#e4ebf7", "#7e8aa1"],
+  bronze: ["#eab28a", "#95643a"]
+};
+
+// Visual podium order: silver on the left, champion centre, bronze right.
+const podiumOrder = [rankings[1], rankings[0], rankings[2]];
+
 export default function LeaderboardBanner() {
   const [open, setOpen] = useState(false);
 
@@ -15,7 +30,7 @@ export default function LeaderboardBanner() {
     <RewardBannerShell number="01" label="Leaderboard — Rank higher, earn more">
       <div className={copy.copy}>
         <BannerBadge tone="gold" icon={<Trophy size={13} strokeWidth={2.4} />}>
-          Competition Stage
+          Competition Stage Active
         </BannerBadge>
 
         <h2 className={copy.heading}>
@@ -31,7 +46,7 @@ export default function LeaderboardBanner() {
 
         <div className={copy.metaRow}>
           <RewardPill tone="gold" icon={<Coins size={14} />}>
-            50K VE prize pool
+            Current pool: 50,000 VEs in prizes
           </RewardPill>
           <RewardPill tone="neutral" icon={<TrendingUp size={14} />}>
             Weekly reset
@@ -69,6 +84,36 @@ export default function LeaderboardBanner() {
         <RewardPill tone="gold" icon={<Trophy size={13} />} className={styles.poolChip}>
           50K VE Reward Pool
         </RewardPill>
+
+        <div className={styles.rankingRow}>
+          {podiumOrder.map((user) => (
+            <article
+              key={user.rank}
+              className={`${styles.rankCard} ${styles[user.medal]} ${
+                user.rank === "01" ? styles.first : ""
+              }`}
+              style={{
+                "--a1": AVATAR_GRADIENTS[user.medal][0],
+                "--a2": AVATAR_GRADIENTS[user.medal][1]
+              }}
+            >
+              <span className={styles.rankNum}>#{user.rank}</span>
+              {user.rank === "01" && (
+                <Crown size={15} strokeWidth={2.4} className={styles.crown} aria-hidden="true" />
+              )}
+              <div className={styles.avatar} aria-hidden="true">
+                {user.name.charAt(0)}
+              </div>
+              <div className={styles.info}>
+                <strong>{user.name}</strong>
+                <span className={styles.veValue}>
+                  <Coins size={12} aria-hidden="true" />
+                  {user.value} VEs
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </RewardBannerShell>
   );
